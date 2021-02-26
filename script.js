@@ -1,0 +1,17 @@
+const counters = document.querySelectorAll(".counter");
+counters.forEach((element) => {
+  element.innerHTML = 0;
+
+  const updateCounter = () => {
+    const targetCount = +element.getAttribute("data-target");
+    const startingCount = Number(element.innerHTML);
+    const increment = targetCount / 100;
+    if (startingCount < targetCount) {
+      element.innerHTML = `${Math.round(startingCount + increment)}`;
+      setTimeout(updateCounter, 100);
+    } else {
+      element.innerHTML = targetCount;
+    }
+  };
+  updateCounter();
+});
